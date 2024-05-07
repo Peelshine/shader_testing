@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://bq3meeod53pie"]
+[gd_scene load_steps=4 format=3 uid="uid://bq3meeod53pie"]
 
-[node name="game" type="Node"]
+[ext_resource type="Script" path="res://addons/debug_camera/scripts/DebugCamera3D.gd" id="2_8mfmx"]
+[ext_resource type="PackedScene" uid="uid://vo4qvirly28f" path="res://assets/scenes/map.tscn" id="2_i3w2b"]
+
+[sub_resource type="Environment" id="Environment_kgxsb"]
+background_mode = 1
+background_color = Color(0.3844, 0.494347, 0.62, 1)
+
+[node name="Game" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("2_i3w2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18487, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kgxsb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, -0.0669873, 0.25, 0, 0.965926, 0.258819, -0.258819, -0.25, 0.933013, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_8mfmx")
+sensitivity = 2.0
